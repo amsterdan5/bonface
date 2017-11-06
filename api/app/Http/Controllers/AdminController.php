@@ -7,6 +7,7 @@ use App\Model\Admin;
 use App\Model\Token;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * 后台控制器
@@ -14,6 +15,7 @@ use Illuminate\Http\UploadedFile;
 class AdminController extends BackBaseController
 {
     protected $request = '';
+    protected $storage = '';
 
     public function __construct(Request $request)
     {
@@ -45,11 +47,15 @@ class AdminController extends BackBaseController
         do {
             $token      = $this->getToken($admin);
             $tokenModel = new Token();
-        } while (!$tokenModel->addToken($token));
+        } while (!$tokenModel->addToken($admin_info->id, $token));
+
+        // $this->request->session()->put('admin_name', $admin_info->name);
+        // $this->request->session()->put('admin_id', $admin_info->id);
 
         return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::LOGIN_SUCCESS), ['token' => $token]);
     }
 
+    // 修改密码
     public function changePwd()
     {
         $admin            = $this->request->post('admin', '');
@@ -74,6 +80,7 @@ class AdminController extends BackBaseController
         return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::CHANGE_PASSWD_FAILED));
     }
 
+    // 添加管理员
     public function addAdmin()
     {
         $admin  = $this->request->post('admin', '');
@@ -84,8 +91,13 @@ class AdminController extends BackBaseController
         }
 
         $adminModel = new Admin();
-        $salt       = $this->salt();
-        $passwd     = $this->getPassSign($passwd, $salt);
+        $admin_info = $adminModel->getAdminByName($admin);
+        if ($admin_info) {
+            return jsonAjax(StatusNo::ACCOUNT_IS_EXISTS, StatusNo::getStatusMsg(StatusNo::ACCOUNT_IS_EXISTS));
+        }
+
+        $salt   = $this->salt();
+        $passwd = $this->getPassSign($passwd, $salt);
 
         $result = $adminModel->addAdmin($admin, $passwd, $salt);
 
@@ -99,7 +111,11 @@ class AdminController extends BackBaseController
     // 添加 banner 图
     public function addBanner()
     {
-        $image = $this->request->post('image', '');
+        $images = $this->request->post('image', []);
+
+        if (empty($images)) {
+            return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::NO_FILE));
+        }
     }
 
     // 上传图片
@@ -118,12 +134,13 @@ class AdminController extends BackBaseController
 
         $upload_path = $type == 1 ? '/product' : '/banner';
 
-        $file_path  = [];
-        $tmp_images = $_FILES['image']['tmp_name'];
+        $file_path = [];
+
+        $this->storage = new Storage();
 
         foreach ($images as $key => $image) {
             $filename                       = md5(uniqid());
-            $file_full_path                 = $this->storageImage($image, $upload_path . '/' . $filename, $tmp_images[$key]);
+            $file_full_path                 = $this->storageImage($image, $upload_path . '/' . $filename, $image->getPathName());
             $file_full_path && $file_path[] = $file_full_path;
         }
 
@@ -135,7 +152,7 @@ class AdminController extends BackBaseController
 
     /**
      * 保存图片
-     * @return [type] [description]
+     * @return string
      */
     private function storageImage(UploadedFile $image, string $path, string $tmp_content)
     {
@@ -152,10 +169,6 @@ class AdminController extends BackBaseController
                 break;
         }
         $full_path = IMAGE_PATH . $path;
-
-        // if (Storage::putFile($path, $content)) {
-        //     return $path;
-        // }
 
         if (file_put_contents($full_path, file_get_contents($tmp_content))) {
             return $path;

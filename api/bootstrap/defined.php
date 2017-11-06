@@ -28,8 +28,11 @@ define('BOOT_PATH', ROOT_PATH . '/app/bootstrap');
 // 功能函数所在目录
 define('FUNC_PATH', ROOT_PATH . '/app/functions');
 
-// 功能函数所在目录
+// 上传的图片所在目录
 define('IMAGE_PATH', ROOT_PATH . '/../upload');
+
+// 样式所在目录
+define('CSS_PATH', ROOT_PATH . '/../static/css');
 
 // 外部库所在目录
 define('VEN_PATH', ROOT_PATH . '/vendor');

@@ -6,12 +6,11 @@ class Token
     // 表名
     protected $table = 'token';
 
-    public function addToken(string $token)
+    public function addToken(int $admin_id, string $token)
     {
         $validate = time() + 86400;
-        return app('db')->insert(
-            'insert into ' . $this->table . '(`token`,`validate`) values(?,?)',
-            [$token, $validate]
+        return app('db')->affectingStatement('REPLACE INTO ' . $this->table . '(`admin_id`,`token`,`validate`) values(?,?,?)',
+            [$admin_id, $token, $validate]
         );
     }
 

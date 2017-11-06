@@ -13,11 +13,14 @@ create table if not exists admin
     primary key(`id`)
 )engine=innodb default charset=utf8 comment='管理员表';
 
+insert into `config`(`id`,`name`,`password``salt`,`ctime`) values(1,'admin','1753be7ed0a8c3993b9439ab04a14576','IeYAf',1509777653);
+
 create table  if not exists token
 (
+    `admin_id` int(10) unsigned not null auto_increment comment '管理员id',
     `token` varchar(255)  not null default '' comment '登录token',
     `validate` int(10)  unsigned not null default 0 comment '有效期',
-    key token(`token`)
+    primary key(`admin_id`)
 )engine=innodb default charset=utf8 comment='登录token';
 
 create table if not exists product
@@ -35,3 +38,13 @@ create table if not exists banner
     `image` varchar(255) not null default '' comment 'banner图',
     primary key(`id`)
 )engine=innodb default charset=utf8 comment='banner表';
+
+create table if not exists config
+(
+    `id` int(10) unsigned not null auto_increment comment '配置 id',
+    `type` varchar(20) not null default '' comment '类型',
+    `value` varchar(255) not null default '' comment '类型对应的值',
+    primary key(`id`)
+)engine=innodb default charset=utf8 comment='配置表';
+
+insert into `config`(`id`,`type`,`value`) values(1,'theme','default');

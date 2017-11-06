@@ -19,42 +19,29 @@ $router->get('/', function () use ($router) {
 $router->post('/admin/login', 'AdminController@login');
 // 修改密码
 $router->post('/admin/add-admin', 'AdminController@addAdmin');
-// // banner 列表
-// $router->get('/admin/banner-list', 'AdminController@bannerList');
-// $router->post('/admin/banner-list', 'AdminController@bannerList');
 // 添加/编辑banner
-$router->post('/admin/add-banner', 'AdminController@addBanner');
+$router->post('/admin/save-banner', 'AdminBannerController@saveBanner');
 // 删除banner
-$router->get('/admin/del-banner', 'AdminController@delBanner');
-$router->post('/admin/del-banner', 'AdminController@delBanner');
-// 产品系列
-$router->post('/admin/product-line', 'AdminController@productLine');
-// // 产品列表
-// $router->post('/admin/product-list', 'AdminController@productList');
+$router->post('/admin/del-banner', 'AdminBannerController@delBanner');
 // 添加/编辑产品
-$router->post('/admin/add-product', 'AdminController@addPorduct');
+$router->post('/admin/save-product', 'AdminProductController@saveProduct');
 // 删除产品
-$router->get('/admin/del-product', 'AdminController@delPorduct');
-$router->post('/admin/del-product', 'AdminController@delPorduct');
+$router->post('/admin/del-product', 'AdminProductController@delProduct');
 // 主题列表
-$router->post('/admin/theme-list', 'AdminController@themeList');
+$router->get('/admin/theme-list', 'AdminThemeController@themeList');
 // 更换主题
-$router->post('/admin/change-theme', 'AdminController@changeTheme');
+$router->post('/admin/change-theme', 'AdminThemeController@changeTheme');
 // 图片上传
 $router->post('/admin/upload-image', 'AdminController@uploadImage');
 
 /******* 用户端接口 **********/
 // banner 列表
 $router->get('/user/banner-list', 'UserController@bannerList');
-$router->post('/user/banner-list', 'UserController@bannerList');
 // 产品系列
 $router->get('/user/product-line', 'UserController@productLine');
-$router->post('/user/product-line', 'UserController@productLine');
 // 产品列表
 $router->get('/user/product-list', 'UserController@productList');
-$router->post('/user/product-list', 'UserController@productList');
 // 产品详情
 $router->get('/user/product-detail', 'UserController@productDetail');
-$router->post('/user/product-detail', 'UserController@productDetail');
 // 当前主题
-$router->get('/user/get-theme', 'UserController@change-theme');
+$router->get('/user/get-theme', 'UserController@getTheme');

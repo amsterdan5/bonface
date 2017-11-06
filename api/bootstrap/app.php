@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__ . '/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
 
@@ -59,10 +59,10 @@ $app->singleton(
 |
  */
 
-// $app->middleware([
-//     // App\Http\Middleware\ExampleMiddleware::class
-//     Illuminate\Session\Middleware\StartSession::class,
-// ]);
+$app->middleware([
+    // App\Http\Middleware\ExampleMiddleware::class
+    Illuminate\Session\Middleware\StartSession::class,
+]);
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
@@ -83,6 +83,11 @@ $app->routeMiddleware([
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+$app->register(Illuminate\Session\SessionServiceProvider::class);
+// 载入session相关配置
+$app->configure('session');
+// 设置session别名
+$app->alias('session', 'Illuminate\Session\SessionManager');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
