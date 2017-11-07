@@ -13,9 +13,9 @@ class AdminThemeController extends BackBaseController
 {
     protected $request = '';
 
-    private static $themeList = [
-        'default' => '默认',
-    ];
+    // private static $themeList = [
+    //     'default' => '默认',
+    // ];
 
     public function __construct(Request $request)
     {
@@ -56,8 +56,9 @@ class AdminThemeController extends BackBaseController
 
     private function getAllTheme()
     {
-        $themes = [];
-        foreach (self::$themeList as $key => $theme) {
+        $themes     = [];
+        $theme_list = config('theme.list');
+        foreach ($theme_list as $key => $theme) {
             if (file_exists(CSS_PATH . '/' . $key . '.css')) {
                 $themes[$key] = $theme;
             }

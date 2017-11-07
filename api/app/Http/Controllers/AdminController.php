@@ -49,8 +49,8 @@ class AdminController extends BackBaseController
             $tokenModel = new Token();
         } while (!$tokenModel->addToken($admin_info->id, $token));
 
-        // $this->request->session()->put('admin_name', $admin_info->name);
-        // $this->request->session()->put('admin_id', $admin_info->id);
+        app('session')->put('admin_name', $admin_info->name);
+        app('session')->put('admin_id', $admin_info->id);
 
         return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::LOGIN_SUCCESS), ['token' => $token]);
     }

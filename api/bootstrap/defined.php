@@ -76,9 +76,9 @@ define('CE_APP_KEY', '9a8f15800a7e598a');
  *         fastcgi_param APP_ENV 'PRODUCTION'; # PRODUCTION|TESTING|DEVELOPMENT
  *     }
  */
-if (isset($_SERVER['APP_ENV'])) {
-    defined($env = strtoupper($_SERVER['APP_ENV'])) || define($env, true);
-    unset($env, $_SERVER['APP_ENV']);
+if (isset($_SERVER['AP_ENV'])) {
+    defined($env = strtoupper($_SERVER['AP_ENV'])) || define($env, true);
+    unset($env, $_SERVER['AP_ENV']);
 }
 
 // 生产环境

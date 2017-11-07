@@ -1,9 +1,14 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/defined.php';
 
 try {
-    (new Dotenv\Dotenv(__DIR__ . '/../'))->load();
+    if (ENV === 'PRODUCTION') {
+        (new Dotenv\Dotenv(__DIR__ . '/../config/product'))->load();
+    } else {
+        (new Dotenv\Dotenv(__DIR__ . '/../config/'))->load();
+    }
 } catch (Dotenv\Exception\InvalidPathException $e) {
     //
 }
@@ -60,7 +65,6 @@ $app->singleton(
  */
 
 $app->middleware([
-    // App\Http\Middleware\ExampleMiddleware::class
     Illuminate\Session\Middleware\StartSession::class,
 ]);
 
@@ -88,6 +92,8 @@ $app->register(Illuminate\Session\SessionServiceProvider::class);
 $app->configure('session');
 // 设置session别名
 $app->alias('session', 'Illuminate\Session\SessionManager');
+
+$app->configure('theme');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
@@ -108,6 +114,5 @@ $app->router->group([
 });
 
 require __DIR__ . '/../app/Common/functions.php';
-require __DIR__ . '/defined.php';
 
 return $app;

@@ -90,6 +90,8 @@ class StatusNo
         self::THEME_CHANGE_SUCCESS     => '更换主题成功',
         self::THEME_CHANGE_FAILED      => '更换主题失败',
         self::UNKONW_THEME             => '未知主题',
+
+        self::EXCEPTION                => '系统异常',
     ];
 
     // 获取状态信息

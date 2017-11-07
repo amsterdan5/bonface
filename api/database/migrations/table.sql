@@ -28,6 +28,7 @@ create table if not exists product
     `id` int(10) unsigned not null auto_increment comment '产品id',
     `name` varchar(40) not null default '' comment '产品名',
     `image` varchar(255) not null default '' comment '产品图',
+    `detail_image` varchar(255) not null default '' comment '产品详情图',
     `desc` varchar(255) not null default '' comment '产品描述',
     primary key(`id`)
 )engine=innodb default charset=utf8 comment='产品表';

@@ -51,9 +51,9 @@ class Authenticate
             return jsonAjax(StatusNo::TOKNE_TIMEOUT, StatusNo::getStatusMsg(StatusNo::TOKNE_TIMEOUT));
         }
 
-        // if (!$request->session()->get('admin_name') || !$request->session()->get('admin_id')) {
-        //     return jsonAjax(StatusNo::NO_LOGIN, StatusNo::getStatusMsg(StatusNo::NO_LOGIN));
-        // }
+        if (!app('session')->get('admin_name') || !app('session')->get('admin_id')) {
+            return jsonAjax(StatusNo::NO_LOGIN, StatusNo::getStatusMsg(StatusNo::NO_LOGIN));
+        }
 
         return $next($request);
     }

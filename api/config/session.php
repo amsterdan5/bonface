@@ -6,7 +6,7 @@ return [
     'encrypt'         => false,
     'files'           => storage_path('framework/session'), //file缓存保存路径
     'connection'      => null,
-    // 'table'           => 'sessions',
+    'table'           => 'sessions',
     'lottery'         => [2, 100],
     'cookie'          => 'bonface-session',
     'path'            => storage_path('framework/session'),
