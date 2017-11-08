@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>bonface</title>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link href="./css/reset.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/res/jquery.min.js"></script>
+
+    <style>
+        html {
+            font-size: 100%;
+            overflow-x: hidden
+        }
+        
+        .footer,
+        img {
+            width: 100%;
+            /*height: 5.1875rem;*/
+            /*background: url(./images/footer.png) no-repeat scroll;*/
+            background-size: 100% auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container swiper-container-horizontal swiper-container-fade swiper-container-android">
+        <div class="swiper-wrapper">
+            <img class="swiper-slide" src="./images/banner3_en.jpg" alt="">
+            <img class="swiper-slide" src="./images/banner1_en.jpg" alt="">
+            <img class="swiper-slide" src="./images/banner2_en.jpg" alt="">
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="index-logo"></div>
+                <div class="nav-title">
+                    <span class="font-tip pointer" id="aboutMe">About Bonface</span>
+                </div>
+                <span class="col-line">|</span>
+                <div class="nav-title pointer" id="productBtnIdx">
+                    <span class="font-tip pointer">Products<span class="arrow-up"></span></span>
+                    <ul class="product-title" id="productList" style="display:none">
+                        <li class="item-list" id="toVenus">Venus</li>
+                        <li class="item-list" id="toVenusDe">Venus De</li>
+                        <li class="item-list" id="toVenusGe">Venus Ge</li>
+                    </ul>
+                </div>
+                <span class="col-line">|</span>
+                <div class="nav-title border-none pointer" id="selectLanguageIdx">
+                    <span class="font-tip border-none pointer">Language<span class="arrow-up"></span></span>
+                    <ul class="product-title language" id="languageItem" style="display:none">
+                        <li class="item-list" id="toEn">ENGLISH</li>
+                        <li class="item-list" id="toKor">한국/한국어</li>
+                        <li class="item-list" id="toCn">中文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <img class="footer" src="./images/footer.png" />
+    </div>
+
+</body>
+<script src="./js/res/swiper.min.js"></script>
+<script src="./js/english.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: '.swiper-pagination',
+        spaceBetween: 30,
+        autoplay: 5000,
+        effect: 'fade'
+    });
+    $('#toEn').click(function (event) {
+        event.stopPropagation();
+        window.location.href = "./index.html";
+    })
+    $('#toKor').click(function (event) {
+        event.stopPropagation();
+        window.location.href = "./index_ko.html";
+    })
+    $('#toCn').click(function (event) {
+        event.stopPropagation();
+        window.location.href = "./index_cn.html";
+    })
+
+</script>
+
+</html>

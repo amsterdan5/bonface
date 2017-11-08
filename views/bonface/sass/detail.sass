@@ -1,0 +1,260 @@
+// commom
+body
+    background: #000
+.pointer
+    cursor: pointer
+
+#toTop
+    display: none
+    position: fixed
+    z-index: 10
+    width: 40px
+    height: 40px
+    right: 20px
+    bottom: 20px
+    border-radius: 20px
+    background: url(../images/to-top.gif)
+    cursor: pointer
+//
+.bg 
+    position: relative 
+    width: 100% 
+    background-size: 100% auto 
+
+
+.navbar
+    position: fixed
+    top: 5%
+    text-align: center
+    width: 14.9%
+    height: 30%
+    color: #fff
+    z-index: 100
+
+
+.product-wrapper
+    margin-top: 10%
+
+
+.line
+    height: 0.0625rem
+    width: 1.4375rem
+    background-color: #666
+    margin: 1.875rem auto
+
+
+.product-list,
+.language
+    display: flex
+    flex-direction: column
+
+
+
+
+
+.product-list li
+    margin: 0 auto
+    padding: 1.25rem 0
+    /*width: 5.3125rem*/
+    border-bottom: 0.0625rem solid #666
+    &:hover
+        cursor: pointer
+        color: #c9f7f7
+
+
+.product-list li:last-child
+    padding: 1.25rem 0 0
+    border: none
+
+
+.language
+    margin-top: 1rem
+
+
+.language li
+    margin: 0 auto
+    padding: 1.25rem 0
+    border-bottom: 0.0625rem solid #666
+    &:hover
+        cursor: pointer
+        color: #c9f7f7
+
+
+.language li:last-child
+    padding: 1.25rem 0 0
+    border: none
+
+
+.arrow-donw
+    display: inline-block
+    width: 0.75rem
+    height: 0.75rem
+    background: url(../images/arrow_down.png) no-repeat center
+
+
+.copyright
+    margin-top: 2rem
+    width: 100%
+    height: 3.0625rem
+    background: url(../images/font.png) no-repeat center
+
+
+.venus-btn,.venus-de-btn,.venus-ge-btn
+    position: absolute
+    cursor: pointer
+    z-index: 100
+
+
+
+/*anti */
+
+.anti-wrapper
+    display: flex
+    flex-direction: column
+    margin-left: 14.9% 
+    width: 85.1%
+    height: 860px
+    background: url(../images/bg.jpg) no-repeat center
+    .anti-box
+        position: relative
+        margin-top: 15%
+        text-align: center
+        img
+            margin-bottom: 50px
+            width: 20% 
+            background-size: 100% auto 
+        .text
+            position: relative
+            display: flex
+            flex-direction: row
+            margin: 0 auto
+            margin-bottom: 1%
+            width: 40%
+            input
+                padding: 0 5%
+                width: 50%
+                margin: 0 auto
+                line-height: 34px
+                border-radius: 16px
+                background: #000
+                color: #fff
+            .search-icon
+                position: absolute 
+                width: 3%
+                right: 21%
+                top: 28%
+                background-size: 100% auto
+            .font-tip
+                font-size: 20px
+
+        
+        
+        
+        .success
+            position: relative
+            display: none
+            .success-text
+                font-size: 200%
+                font-weight: bold
+                font-family: 'SimSun'
+                width: 30%
+                padding: 10px
+                background: #ddd
+                margin: 0 auto
+                border-radius: 5px
+            .icon-close
+                text-align: right
+                cursor: pointer
+            .result-content
+                font-size: 60%
+                padding: 10px
+                font-family: 'Microsoft YaHei'
+                letter-spacing: 3px
+            .submit
+                bottom: -185%
+                color: #fff
+                background: #000
+                padding: 10px 20px
+                line-height: 10px
+                border-radius: 5px
+                cursor: pointer
+
+    .fail
+        display: none
+        margin: 0 auto
+        margin-top: 10%
+        text-align: center
+        width: 80%
+        background: #000
+        color: #fff
+        height: 50%
+        .fail-content
+            display: flex
+            flex-direction: column
+            text-align: center
+            .fail-icon
+                margin: 50px auto 20px
+                width: 15% 
+                background-size: 100% auto 
+
+            .fail-font
+                font-size: 18px
+                margin-bottom: 10px
+                font-weight: 300
+                color: rgba(255,255,255,0.8)
+            .fail-btn
+                margin: 0 auto
+                margin-top: 10px
+                padding: 5px
+                width: 6%
+                border-radius: 5px
+                border: none
+
+
+
+.cert
+    margin-left: 14.9% 
+    width: 85.1%
+    background-size: 100% auto 
+@media only screen and (min-width: 1366px)
+    .venus-btn,.venus-de-btn,.venus-ge-btn
+        top: 12rem
+        left: 25rem
+        width: 15rem
+        height: 18rem
+    .venus-de-btn
+        left: 41rem
+    .venus-ge-btn
+        left: 59rem
+@media only screen and (min-width: 1440px)
+    .venus-btn,.venus-de-btn,.venus-ge-btn
+        top: 12rem
+        left: 26rem
+        width: 15rem
+        height: 20rem
+    .venus-de-btn
+        left: 44rem
+    .venus-ge-btn
+        left: 63rem
+@media only screen and (min-width: 1600px)
+    .venus-btn,.venus-de-btn,.venus-ge-btn
+        top: 14rem
+        left: 30rem
+        width: 16rem
+        height: 21rem
+    .venus-de-btn
+        left: 49rem
+    .venus-ge-btn
+        left: 70rem
+
+@media only screen and (min-width: 1920px)
+    .venus-btn,.venus-de-btn,.venus-ge-btn
+        top: 17rem
+        left: 35rem
+        width: 20rem
+        height: 26rem
+    .venus-de-btn
+        left: 58rem
+    .venus-ge-btn
+        left: 84rem
+

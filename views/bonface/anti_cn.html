@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>防伪验证</title>
+	<meta charset="UTF-8">
+	<link href="./css/reset.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/detail.css">
+	<script src="./js/res/jquery.min.js"></script>
+
+	<body>
+		<div class="navbar" style="height:100%">
+			<img src="./images/bonfaceLOGO.png" id="toIndex" class="pointer" alt="" style="width: 70%">
+			<div class="product-wrapper">
+				<!--品牌-->
+				<div class="title pointer" id="aboutMe">关于品牌</div>
+				<div class="line"></div>
+				<div class="product-btn" id="productBtn">
+					<span class="pointer">产品系列</span>
+					<span class="arrow-donw"></span>
+					<ul class="product-list" id="productList" style=" display: none">
+						<li id="toVenus">Venus</li>
+						<li id="toVenusDe">Venus De</li>
+						<li id="toVenusGe">Venus Ge</li>
+					</ul>
+				</div>
+				<div class="line"></div>
+				<div class="product-btn" id="chinaSell">
+					<span class="pointer">Bonface中国区</span>
+					<span class="arrow-donw"></span>
+					<ul class="product-list" id="chinaItem" style="display:none">
+						<li id="toSellCn">授权证明</li>
+						<li id="toAnti">防伪验证</li>
+					</ul>
+				</div>
+				<div class="line"></div>
+				<div class="about" id="selectLanguage">
+					<span class="pointer">版本语言</span>
+					<span class="arrow-donw"></span>
+					<ul class="language" style="display:none" id="languageItem">
+						<li id="toEn">ENGLISH</li>
+						<li id="toKor">한국/한국어</li>
+						<li id="toCn">中文</li>
+					</ul>
+				</div>
+			</div>
+			<div class="copyright"></div>
+		</div>
+		<div id="toTop"></div>
+		<div class="anti-wrapper">
+			<div class="anti-box" id="antiBox">
+				<img class="bon-logo" src="./images/bonfaceLOGO_b.png" />
+				<div class="text" id="textContent">
+					<input type="text" value="" id="codeInput" placeholder="防伪验证码查询">
+					<img class="search-icon" id="searchBtn" style="cursor: pointer" src="./images/search-icon.png" />
+				</div>
+				<span class="font-tip" id="fontTip">防伪验证码查询仅为Bonface中国地区销售产品使用</span>
+				<!--验证成功-->
+				<div class="success">
+					<!--<div class="success-text">
+						您购买的是原装正品Bonface产品
+					</div>-->
+					<div class="success-text">
+						<div class="icon-close">×</div>
+						<p class="result-content"></p>
+						<button type="botton" class="submit">确认</button>
+					</div>
+				</div>
+			</div>
+			<!--验证失败-->
+			<div class="fail" id="failWrapper">
+				<div class="fail-content">
+					<img src="./images/fail-icon.png" alt="" class="fail-icon">
+					<div class="fail-font">您输入的防伪验证码有误</div>
+					<div class="fail-font">请仔细核对后重新输入</div>
+					<button type="button" class="fail-btn">确认</button>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		function querycode() {
+			var iWidth = 400; //窗口宽度 
+			var iHeight = 200;//窗口高度 
+			var iTop = (window.screen.height - iHeight) / 2;
+			var percent = window.screen.width * (0.149/2);
+			var iLeft = (window.screen.width - iWidth ) / 2 +percent;
+			console.log(iLeft,percent);
+			var code = document.getElementById("codeInput").value;
+			var Sendurl = "http://www.china3-15.com/Result.aspx?code=" + escape(code);
+			if (code != '') {
+				window.open(Sendurl, "", "Scrollbars=no,Toolbar=no,Location=no,Direction=no,Resizeable=no, Width= " + iWidth + ", Height = " + iHeight + ", top = " + iTop + ", left = " + iLeft)
+			}else{
+				alert("请输入防伪码！");
+			}
+		}
+	</script>
+	<script src="./js/chinese.js"></script>
+	<script src="./js/toTop.js"></script>
+	<script>
+		$('#toEn').click(function (event) {
+			event.stopPropagation();
+			window.location.href = "./detail_en.html";
+		})
+		$('#toKor').click(function (event) {
+			event.stopPropagation();
+			window.location.href = "./detail_ko.html";
+		});
+		$('#toCn').click(function (event) {
+			event.stopPropagation();
+			window.location.href = "./detail_cn.html";
+		});
+	</script>
+
+</html>

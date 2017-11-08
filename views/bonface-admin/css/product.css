@@ -1,0 +1,71 @@
+.cover-wrap, .product-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.cover-wrap .cover-img, .product-wrap .product-img{
+    width: 300px;
+    height: 168px;
+    border: 2px solid #cccccc;
+    margin-right: 50px;
+}
+
+.cover-wrap .cover-img img, .product-wrap .product-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.cover-wrap .cover-tips {
+    outline: 0;
+    border: 0;
+    line-height: 38px;
+    height: 38px;
+    width: 98px;
+    background: #1AA094;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 173px;
+}
+
+.product-name {
+    font-size: 16px;
+    margin-right: 100px;
+}
+
+.product-btn button {
+    outline: 0;
+    border: 0;
+    line-height: 38px;
+    height: 38px;
+    width: 68px;
+    background: #1AA094;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.product-btn .del {
+    background: red;
+}
+
+#add, #save {
+    outline: 0;
+    border: 0;
+    line-height: 38px;
+    height: 38px;
+    width: 68px;
+    background: #1AA094;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
+}

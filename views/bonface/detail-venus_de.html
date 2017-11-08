@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Venus De</title>
+	<meta charset="UTF-8">
+	<link href="./css/reset.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/detail.css">
+	<script src="./js/res/jquery.min.js"></script>
+	<style>
+
+	</style>
+
+	<body>
+		<div class="navbar">
+			<img src="./images/bonfaceLOGO.png" id="toIndex" class="pointer" alt="" style="width: 70%">
+			<div class="product-wrapper">
+				<!--品牌-->
+				<div class="title pointer" id="aboutMe">상품에 브랜드</div>
+				<div class="line"></div>
+				<div class="product-btn" id="productBtn">
+					<span class="pointer">상품 시리즈</span>
+					<span class="arrow-donw"></span>
+					<ul class="product-list" id="productList" style=" display: none">
+						<li id="toVenus">Venus</li>
+						<li id="toVenusDe">Venus De</li>
+						<li id="toVenusGe">Venus Ge</li>
+					</ul>
+				</div>
+				<div class="line"></div>
+				<div class="about" id="selectLanguage">
+					<span class="pointer">버전 언어</span>
+					<span class="arrow-donw"></span>
+					<ul class="language" style="display:none" id="languageItem">
+						<li id="toEn">ENGLISH</li>
+						<li id="toKor">한국/한국어</li>
+					</ul>
+				</div>
+			</div>
+			<div class="copyright"></div>
+		</div>
+		<div id="toTop"></div>
+		<img class="bg" src="./images/detail3.jpg" alt="">
+	</body>
+	<script src="./js/korean.js"></script>
+	<script src="./js/toTop.js"></script>
+	<script>
+		$('#toEn').click(function (event) {
+			event.stopPropagation();
+			window.location.href = "./detail-venus_de_en.html";
+		})
+		$('#toKor').click(function (event) {
+			event.stopPropagation();
+			window.location.href = "./detail-venus_de.html";
+		});
+	</script>
+
+</html>

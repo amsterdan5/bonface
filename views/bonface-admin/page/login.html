@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>bonface 后台管理系统</title>
+    <style type="text/css">
+      html {
+        background: #161718;
+      }
+      
+      body {
+        background: url(../images/background.jpg) no-repeat center center;
+        min-height: 600px;
+        padding: 200px 0 0;
+        font: "微软雅黑";
+      }
+      
+      header {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        padding-top: 31px;
+      }
+      
+      #login-wrap {
+        width: 288px;
+        height: 321px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        -moz-perspective: 800px;
+        -webkit-perspective: 800px;
+        perspective: 800px;
+      }
+      
+      #login-wrap .login {
+        background: url(../images/login_form_bg.jpg) no-repeat;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      input {
+        border: 0;
+        outline: 0;
+        position: absolute;
+      }
+      
+      input[type=text],
+      input[type=password] {
+        background: none;
+        height: 36px;
+        left: 26px;
+        width: 234px;
+        text-indent: 8px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        color: #eee;
+      }
+      
+      #userName {
+        top: 176px;
+      }
+      
+      #password {
+        top: 215px;
+      }
+      
+      #login {
+        opacity: 0.9;
+        top: 262px;
+        left: 25px;
+        width: 239px;
+        height: 36px;
+        cursor: pointer;
+        border-radius: 6px;
+        box-shadow: 0 1px 1px #888;
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        background-image: -webkit-linear-gradient(bottom, rgb(80, 102, 127) 50%, rgb(87, 109, 136) 50%, rgb(106, 129, 155) 100%);
+        background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, rgb(80, 102, 127)), color-stop(0.5, rgb(87, 109, 136)), color-stop(1, rgb(106, 129, 155)));
+      }
+      
+      input::-webkit-input-placeholder {
+        color: #fff;
+      }
+      
+      :-moz-placeholder {
+        color: #fff;
+      }
+      
+      ::-moz-placeholder {
+        color: #fff;
+      }
+      
+      input:-ms-input-placeholder {
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>bonface 管理后台</header>
+    <div id="login-wrap">
+      <div class="login">
+        <input type="text" id="userName" placeholder="请输入用户名" />
+        <input type="password" id="password" placeholder="请输入密码" />
+        <input type="submit" id="login" value="登录" />
+      </div>
+    </div>
+  </body>
+
+</html>
