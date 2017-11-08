@@ -58,11 +58,11 @@ class AdminController extends BackBaseController
     // 修改密码
     public function changePwd()
     {
-        $admin            = $this->request->post('admin', '');
+        // $admin            = $this->request->post('admin', '');
         $passwd           = $this->request->post('password', '');
         $confirm_password = $this->request->post('confirm_password', '');
 
-        if (!$admin || !$passwd || !$confirm_password) {
+        if (!$passwd || !$confirm_password) {
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::NO_ACCOUNT_PASSWD));
         }
 
@@ -73,8 +73,9 @@ class AdminController extends BackBaseController
         $adminModel = new Admin();
         $salt       = $this->salt();
         $passwd     = $this->getPassSign($passwd, $salt);
+        $admin_id   = session('admin_id');
 
-        if ($adminModel->updatePasswd($admin, $passwd, $salt)) {
+        if ($adminModel->updatePasswd($admin_id, $passwd, $salt)) {
             return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::CHANGE_PASSWD_SUCCESS));
         }
         return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::CHANGE_PASSWD_FAILED));

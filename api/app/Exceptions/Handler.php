@@ -47,6 +47,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         if (ENV === 'PRODUCTION') {
+            if ($email_tos = config('mail.to')) {
+                $email_tos = explode(',', $email_tos);
+                $message   = '错误信息：' . $e->getMessage() . '<br/>文件：' . $e->getFile() . '<br/>行号：' . $e->getLine();
+                foreach ($email_tos as $to) {
+                    send_mail($to, '系统错误', $message);
+                }
+            }
+
             parent::render($request, $e);
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::EXCEPTION));
         }

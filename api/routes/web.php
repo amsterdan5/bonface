@@ -17,8 +17,10 @@ $router->get('/', function () use ($router) {
 // /******* 后台接口 ************/
 // 登录
 $router->post('/admin/login', 'AdminController@login');
-// 修改密码
+// 添加管理员
 $router->post('/admin/add-admin', 'AdminController@addAdmin');
+// 修改密码
+$router->post('/admin/change-pwd', 'AdminController@changePwd');
 // 添加/编辑banner
 $router->post('/admin/save-banner', 'AdminBannerController@saveBanner');
 // 删除banner

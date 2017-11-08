@@ -9,7 +9,7 @@ return [
     'table'           => 'sessions',
     'lottery'         => [2, 100],
     'cookie'          => 'bonface-session',
-    'path'            => storage_path('framework/session'),
+    'path'            => '/',
     'domain'          => null,
     'secure'          => false,
 ];

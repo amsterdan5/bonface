@@ -94,6 +94,8 @@ $app->configure('session');
 $app->alias('session', 'Illuminate\Session\SessionManager');
 
 $app->configure('theme');
+
+$app->configure('mail');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

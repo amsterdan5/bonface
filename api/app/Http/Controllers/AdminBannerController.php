@@ -24,6 +24,7 @@ class AdminBannerController extends BackBaseController
     {
         $image = $this->request->post('image', '');
         $id    = $this->request->post('id', 0);
+        $lang  = $this->request->post('lang', 'cn');
 
         if (!$image) {
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::NO_FILE));
@@ -33,20 +34,20 @@ class AdminBannerController extends BackBaseController
 
         // 编辑
         if ($id) {
-            if ($bannerModel->editBanner($id, $image)) {
+            if ($bannerModel->editBanner($id, $image, $lang)) {
                 return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::BANNER_INFO_ADD_SUCCESS));
             }
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::BANNER_INFO_ADD_FAILED));
         }
 
         // 不超过6条
-        $count = $bannerModel->getBannerCount();
+        $count = $bannerModel->getBannerCount($lang);
         if ($count === 6) {
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::BANNER_MAX_SIX));
         }
 
         // 新增
-        if ($bannerModel->addBanner($image)) {
+        if ($bannerModel->addBanner($image, $lang)) {
             return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::BANNER_INFO_ADD_SUCCESS));
         }
 

@@ -32,11 +32,11 @@ class Admin
     /**
      * 修改密码
      */
-    public function updatePasswd(string $admin, string $passwd, string $salt)
+    public function updatePasswd(string $admin_id, string $passwd, string $salt)
     {
         return app('db')->update(
-            'update ' . $this->table . ' set `password`=?,`salt`=?,`ctime`=? where admin=?',
-            [$passwd, $salt, time(), $admin]
+            'update ' . $this->table . ' set `password`=?,`salt`=?,`ctime`=? where id=?',
+            [$passwd, $salt, time(), $admin_id]
         );
     }
 }

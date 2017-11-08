@@ -26,6 +26,7 @@ class AdminProductController extends BackBaseController
         $image        = $this->request->post('image', '');
         $detail_image = $this->request->post('detail_image', '');
         $desc         = $this->request->post('desc', '');
+        $lang         = $this->request->post('lang', 'cn');
         $id           = $this->request->post('id', 0);
 
         if (!$name || !$image || !$detail_image) {
@@ -36,14 +37,14 @@ class AdminProductController extends BackBaseController
 
         // 编辑
         if ($id) {
-            if ($productModel->editProduct($id, $name, $image, $detail_image, $desc)) {
+            if ($productModel->editProduct($id, $name, $image, $detail_image, $desc, $lang)) {
                 return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::PRODUCT_INFO_ADD_SUCCESS));
             }
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::PRODUCT_INFO_ADD_FAILED));
         }
 
         // 新增
-        if ($productModel->addProduct($name, $image, $detail_image, $desc)) {
+        if ($productModel->addProduct($name, $image, $detail_image, $desc, $lang)) {
             return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::PRODUCT_INFO_ADD_SUCCESS));
         }
 

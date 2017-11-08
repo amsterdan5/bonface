@@ -22,16 +22,18 @@ class UserController extends Controller
     // banner 列表
     public function bannerList()
     {
+        $lang         = $this->request->get('lang', 'cn');
         $bannerModel  = new Banner();
-        $banner_lists = $bannerModel->getBanner();
+        $banner_lists = $bannerModel->getBanner($lang);
         return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::SUCCESS), [$banner_lists]);
     }
 
     // 产品系列
     public function productLine()
     {
+        $lang          = $this->request->get('lang', 'cn');
         $productModel  = new Product();
-        $product_lists = $productModel->getProductList();
+        $product_lists = $productModel->getProductList($lang);
         $product_lists = empty($product_lists) ? [] : [$product_lists];
         return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::SUCCESS), $product_lists);
     }
@@ -39,8 +41,9 @@ class UserController extends Controller
     // 产品列表
     public function productList()
     {
+        $lang          = $this->request->get('lang', 'cn');
         $productModel  = new Product();
-        $product_lists = $productModel->getProductList();
+        $product_lists = $productModel->getProductList($lang);
         $product_lists = empty($product_lists) ? [] : [$product_lists];
         return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::SUCCESS), $product_lists);
     }

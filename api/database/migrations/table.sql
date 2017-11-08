@@ -30,6 +30,7 @@ create table if not exists product
     `image` varchar(255) not null default '' comment '产品图',
     `detail_image` varchar(255) not null default '' comment '产品详情图',
     `desc` varchar(255) not null default '' comment '产品描述',
+    `lang` varchar(5) not null default 'cn' comment '语言，cn：中文,kr：韩文,en：英文',
     primary key(`id`)
 )engine=innodb default charset=utf8 comment='产品表';
 
@@ -37,6 +38,7 @@ create table if not exists banner
 (
     `id` int(10) unsigned not null auto_increment comment 'banner id',
     `image` varchar(255) not null default '' comment 'banner图',
+    `lang` varchar(5) not null default 'cn' comment '语言，cn：中文,kr：韩文,en：英文',
     primary key(`id`)
 )engine=innodb default charset=utf8 comment='banner表';
 
