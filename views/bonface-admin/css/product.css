@@ -35,14 +35,12 @@
     margin-right: 100px;
 }
 
-.product-btn button {
+.button {
     outline: 0;
     border: 0;
     line-height: 38px;
     height: 38px;
     width: 68px;
-    background: #1AA094;
-    color: #ffffff;
     font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
@@ -50,16 +48,22 @@
     margin-top: 20px;
 }
 
-.product-btn .del {
-    background: red;
+.product-btn .edit {
+    background: #1AA094;
+    color: #ffffff;
 }
 
-#add, #save {
+.product-btn .del {
+    background: red;
+    color: #ffffff;
+}
+
+#add {
     outline: 0;
     border: 0;
     line-height: 38px;
     height: 38px;
-    width: 68px;
+    width: 98px;
     background: #1AA094;
     color: #ffffff;
     font-size: 16px;
@@ -68,4 +72,104 @@
     margin-left: 10px;
     margin-right: 20px;
     margin-top: 20px;
+}
+
+.layer-wrap .layer {
+    width: 550px;
+    height: 500px;
+    background: #fff;
+    position: fixed;
+    top: 20px;
+    border-radius: 4px;
+    z-index: 9;
+}
+
+.layer-wrap .layer .layer-title {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    background: #393D49;
+    color: #fff;
+    border-radius: 4px;
+    display: flex;
+}
+
+.layer-title .edit-title {
+    flex: 1
+}
+
+.layer-title .close {
+    width: 25px;
+    cursor: pointer;
+}
+
+.colum {
+    margin: 20px 0 0 0;
+    text-align: center
+}
+
+.colum span {
+    font-size: 14px;
+}
+
+.colum input {
+    width: 300px;
+    border: 1px solid #999;
+    padding-left: 10px;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    box-sizing: border-box;
+}
+
+.poduct-detail {
+    margin: 30px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poduct-detail .add-detail {
+    height: 168px;
+    width: 300px;
+    border: 1px solid #999999;
+    margin-left: 4px;
+    position: relative;
+}
+
+.poduct-detail .add-detail img {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+}
+
+.poduct-detail .add-detail .add {
+    position: absolute;
+    left: 119px;
+    top: 29px;
+    font-size: 70px
+}
+
+.btn-wrap {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+}
+
+.save {
+    background: #1AA094;
+    color: #ffffff;
+    margin-left: 0;
+}
+
+.cancel {
+    background: #fff;
+    border: 1px solid;
+    margin-left: 30px;
+}
+
+.none {
+    display: none;
 }

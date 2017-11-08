@@ -27,8 +27,8 @@
 		</div>
 		<div class="product-name">产品名称：<span class="name">venus</span></div>
 		<div class="product-btn">
-			<button class="edit">编辑</button>
-			<button class="del">删除</button>
+			<button class="edit button">编辑</button>
+			<button class="del button">删除</button>
 		</div>
 	</div>
 
@@ -38,8 +38,8 @@
 		</div>
 		<div class="product-name">产品名称：<span class="name">venus</span></div>
 		<div class="product-btn">
-			<button class="edit">编辑</button>
-			<button class="del">删除</button>
+			<button class="edit button">编辑</button>
+			<button class="del button">删除</button>
 		</div>
 	</div>
 
@@ -49,16 +49,38 @@
 		</div>
 		<div class="product-name">产品名称：<span class="name">venus</span></div>
 		<div class="product-btn">
-			<button class="edit">编辑</button>
-			<button class="del">删除</button>
+			<button class="edit button">编辑</button>
+			<button class="del button">删除</button>
 		</div>
 	</div>
 
 	<footer>
-        <button id="add">新增</button>
-		<button id="save">保存</button>
+        <button id="add">新增产品</button>
 	</footer>
 	
+	<div class="layer-wrap none">
+		<div class="layer">
+			<p class="layer-title">
+				<span class="edit-title">编辑产品</span>
+				<span class="close">X</span>
+			</p>
+			<div class="colum">
+				<span>产品名称：</span>
+				<input type="text" value="" placeholder="请输入产品名称">
+			</div>
+			<div class="poduct-detail">
+				<span>产品详情：</span>
+				<div class="add-detail">
+					<img src="" alt="">
+					<span class="add">+</span>
+				</div>
+			</div>
+			<div class="btn-wrap">
+				<button class="save button">保存</button>
+				<button class="cancel button">取消</button>
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript" src="product.js"></script>
 </body>
