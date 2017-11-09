@@ -133,7 +133,7 @@ class AdminController extends BackBaseController
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::NO_FILE_TYPE));
         }
 
-        $upload_path = $type == 1 ? '/product' : '/banner';
+        $upload_path = $type == 1 ? '/images/product' : '/images/banner';
 
         $file_path = [];
 

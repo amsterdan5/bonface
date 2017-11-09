@@ -14,12 +14,13 @@
 │   ├── routes             路由
 │   └── vendor             Composer 第三方库
 ├── docs                   接口文档
-├── static
-│   ├── js                 js文件
-│   └── css                css文件
-└── upload
-    ├── product            产品图
-    └── banner             banner
+├── images
+│   ├── product            产品图
+│   └── banner             banner
+├── views
+│   ├── bonface            用户端页面
+│   ├── bonface-admin      后台页面
+│   └── static             静态文件
 ```
 
 ### 说明
@@ -30,27 +31,29 @@
 ### 环境
 
 #### nginx 配置
+
 ```
+
 server {
   listen 80;
   server_name 7.hujs.test.com;
   access_log /data/wwwlogs/nginx/7.hujs.test.com_access.log combined;
   error_log /data/wwwlogs/nginx/7.hujs.test.com_error.log;
   index index.html index.htm index.php;
-  root /data/wwwroot/php/personal/face/views/bonface;
+  root /data/wwwroot/php/personal/face/views;
 
   include /usr/local/openresty/nginx/conf/rewrite/other.conf;
-  #error_page 404 /404.html;
+  error_page 404 = /error.html;
   #error_page 502 /502.html;
 
 
 
   location /api {
-      rewrite ^/api/(.*)$ /index.php/$1;
+    rewrite ^/api/(.*)$ /index.php/$1;
   }
 
   location / {
-      index index.html;
+      root /data/wwwroot/php/personal/face/views/bonface/;
   }
 
   location /admin {
@@ -79,18 +82,23 @@ server {
   }
 
   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {
+    root /data/wwwroot/php/personal/face/;
     expires 30d;
     access_log off;
   }
+
   location ~ .*\.(js|css)?$ {
+    root /data/wwwroot/php/personal/face/views/static/;
     expires 7d;
     access_log off;
+    rewrite ^/admin/(.*)$ /bonface-admin/$1;
   }
+
   location ~ /\.ht {
     deny all;
   }
-}
 
+}
 
 ```
 
