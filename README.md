@@ -84,7 +84,7 @@ server {
     access_log off;
   }
 
-  location ~ .*\.(js|css)?$ {
+  location ~ .*\.(js|css|ttf)?$ {
       root $common_path/views/static/;
     expires 7d;
     access_log off;
