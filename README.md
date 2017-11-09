@@ -33,27 +33,24 @@
 #### nginx 配置
 
 ```
-
 server {
   listen 80;
   server_name 7.hujs.test.com;
   access_log /data/wwwlogs/nginx/7.hujs.test.com_access.log combined;
   error_log /data/wwwlogs/nginx/7.hujs.test.com_error.log;
   index index.html index.htm index.php;
-  root /data/wwwroot/php/personal/face/views;
+  set $common_path /data/wwwroot/php/personal/face;
+  root $common_path/views;
 
   include /usr/local/openresty/nginx/conf/rewrite/other.conf;
+
   error_page 404 = /error.html;
-  #error_page 502 /502.html;
-
-
-
   location /api {
     rewrite ^/api/(.*)$ /index.php/$1;
   }
 
   location / {
-      root /data/wwwroot/php/personal/face/views/bonface/;
+      root $common_path/views/bonface/;
   }
 
   location /admin {
@@ -61,7 +58,7 @@ server {
   }
 
   location /bonface-admin {
-      root /data/wwwroot/php/personal/face/views/;
+      root $common_path/views/;
   }
 
   location ~ [^/]\.php(/|$) {
@@ -71,7 +68,7 @@ server {
         set $new_request_uri /index.php/$1;
     }
 
-    root /data/wwwroot/php/personal/face/api/public;
+    root $common_path/api/public;
     fastcgi_param AP_ENV   'DEVELOPMENT';
     #fastcgi_pass 127.0.0.1:9999;
     fastcgi_pass unix:/dev/shm/php-cgi.sock;
@@ -82,13 +79,13 @@ server {
   }
 
   location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {
-    root /data/wwwroot/php/personal/face/;
+    root $common_path;
     expires 30d;
     access_log off;
   }
 
   location ~ .*\.(js|css)?$ {
-    root /data/wwwroot/php/personal/face/views/static/;
+      root $common_path/views/static/;
     expires 7d;
     access_log off;
     rewrite ^/admin/(.*)$ /bonface-admin/$1;
