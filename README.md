@@ -84,8 +84,8 @@ server {
     access_log off;
   }
 
-  location ~ .*\.(js|css|ttf)?$ {
-      root $common_path/views/static/;
+  location ~ .*\.(js|css|ttf|woff)?$ {
+    root $common_path/views/static/;
     expires 7d;
     access_log off;
     rewrite ^/admin/(.*)$ /bonface-admin/$1;
