@@ -72,6 +72,7 @@ server {
     fastcgi_param AP_ENV   'DEVELOPMENT';
     #fastcgi_pass 127.0.0.1:9999;
     fastcgi_pass unix:/dev/shm/php-cgi.sock;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
     fastcgi_index index.php;
     include fastcgi.conf;
 
