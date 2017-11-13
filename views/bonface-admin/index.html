@@ -25,12 +25,12 @@
     				<li class="layui-nav-item" pc>
     					<a href="javascript:;">
     						<img src="images/face.jpg" class="layui-circle" width="35" height="35">
-    						<cite>admin</cite>
+    						<cite class="userName"></cite>
     					</a>
     					<dl class="layui-nav-child">
     					  <dd><a href="javascript:;" data-url="page/user/addUser.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>添加帐号</cite></a></dd>
     						<dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
-    						<dd><a href="javascript:;"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
+    						<dd><a href="/admin/login.html"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
     					</dl>
     				</li>
 				</ul>
@@ -40,7 +40,7 @@
 		<div class="layui-side layui-bg-black">
 			<div class="user-photo">
 				<a class="img" title="我的头像" ><img src="images/face.jpg"></a>
-				<p>你好！<span class="userName">admin</span>, 欢迎登录</p>
+				<p>你好！<span class="userNames"></span>, 欢迎登录</p>
 			</div>
 			<div class="navBar layui-side-scroll"></div>
 		</div>
@@ -63,5 +63,10 @@
 	<script type="text/javascript" src="js/nav.js"></script>
 	<script type="text/javascript" src="js/leftNav.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		var userName = "admin"
+		document.querySelector('.userName').innerText = userName
+		document.querySelector('.userNames').innerText = userName
+	</script>
 </body>
 </html>
