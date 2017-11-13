@@ -82,6 +82,7 @@ server {
     root $common_path;
     expires 30d;
     access_log off;
+    rewrite ^/admin/(.*)$ /$1;
   }
 
   location ~ .*\.(js|css|ttf|woff)?$ {
