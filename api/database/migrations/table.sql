@@ -13,7 +13,7 @@ create table if not exists admin
     primary key(`id`)
 )engine=innodb default charset=utf8 comment='管理员表';
 
-insert into `admin`(`id`,`name`,`password``salt`,`ctime`) values(1,'admin','1753be7ed0a8c3993b9439ab04a14576','IeYAf',1509777653);
+insert into `admin`(`id`,`name`,`password`,`salt`,`ctime`) values(1,'admin','1753be7ed0a8c3993b9439ab04a14576','IeYAf',1509777653);
 
 create table  if not exists token
 (
