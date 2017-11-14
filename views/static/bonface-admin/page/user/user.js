@@ -3,44 +3,58 @@ var form;
 var $;
 layui.config({
   base: "../../js/"
-}).use(['form', 'layer'], function() {
-  form = layui.form();
+}).use(['layer'], function() {
   var layer = layui.layer;
   $ = layui.jquery;
-  $form = $('form');
+  $('.userName').val(sessionStorage.getItem('userName'))
 
-  //添加验证规则
-  form.verify({
-    oldPwd: function(value, item) {
-      if(value != "123456") {
-        return "密码错误，请重新输入！";
-      }
-    },
-    newPwd: function(value, item) {
-      if(value.length < 6) {
-        return "密码长度不能小于6位";
-      }
-    },
-    confirmPwd: function(value, item) {
-      if(!new RegExp($("#oldPwd").val()).test(value)) {
-        return "两次输入密码不一致，请重新输入！";
-      }
+  // 重置按钮
+  $('#reset').on('click', function() {
+    $('.pwd').val('')
+  })
+  
+  // 提交按钮
+  $('#submit').on('click', function () {
+    if(!$('.oldpwd').val()) {
+      alert('请输入旧密码')
+      $('.oldpwd').focus()
+      return
     }
-  })
-
-  //修改密码
-  form.on("submit(changePwd)", function(data) {
-    var index = layer.msg('提交中，请稍候', {
-      icon: 16,
-      time: false,
-      shade: 0.8
+    if(!$('.newpwd').val()) {
+      alert('请输入新密码')
+      $('.newpwd').focus()
+      return
+    }
+    if(!$('.surepwd').val()) {
+      alert('请再次输入新密码')
+      $('.surepwd').focus()
+      return
+    }
+    if($('.newpwd').val().length < 6) {
+      alert('密码长度必须大于6位数')
+      $('.newpwd').focus()
+      return
+    }
+    if($('.surepwd').val() !== $('.newpwd').val()) {
+      alert('两次密码输入不一致')
+      return
+    }
+    $.ajax({
+      type:"post",
+      url:"/admin/change-pwd",
+      async:true,
+      data: {
+        password: $('.newpwd').val(),
+        confirm_password: $('.surepwd').val(),
+        token: sessionStorage.getItem('token')
+      },
+      success: function(res) {
+        if(res.code === 1) {
+          alert('密码修改成功')
+        } else {
+          alert(res.msg)
+        }
+      }
     });
-    setTimeout(function() {
-      layer.close(index);
-      layer.msg("密码修改成功！");
-      $(".pwd").val('');
-    }, 2000);
-    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
   })
-
 })

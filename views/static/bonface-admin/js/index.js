@@ -51,3 +51,8 @@ layui.config({
 function addTab(_this){
 	tab.tabAdd(_this);
 }
+
+// 没有token时，返回登录页面
+if(!sessionStorage.getItem('token')) {
+  window.location.href = '/admin/login.html'
+}

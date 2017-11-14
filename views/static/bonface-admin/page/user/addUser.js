@@ -19,7 +19,8 @@ $('.submit').on('click', function () {
       async:true,
       data: {
         admin: $('.userName').val(),
-        password: $('.password').val()
+        password: $('.password').val(),
+        token: sessionStorage.getItem('token')
       },
       success: function(res) {
         if(res.code === 0) {

@@ -22,10 +22,12 @@ layui.config({
         password: $('#password').val()
       },
       success: function(res) {
-        if(res.code === 0) {
-          alert('请输入正确的密码')
-        } else {
+        if(res.code === 1) {
+          sessionStorage.setItem('userName', $('#userName').val())
+          sessionStorage.setItem('token', res.data.token)
           window.location.href = '/admin/index.html'
+        } else {
+          alert(res.msg)
         }
       }
     });
