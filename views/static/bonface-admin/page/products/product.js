@@ -3,7 +3,9 @@ layui.config({
   }).use(['layer', 'jquery'], function() {
       var  $ = layui.jquery;
       var layer = layui.layer;
-  
+      var langUrl = $('iframe').context.location.search
+      var lang = langUrl.substring(6, langUrl.length)
+      
       //点击编辑出现编辑弹窗
       $('.edit').on('click', function () {
         $('.layer-wrap').removeClass('none');

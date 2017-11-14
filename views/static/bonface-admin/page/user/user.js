@@ -43,10 +43,12 @@ layui.config({
       type:"post",
       url:"/admin/change-pwd",
       async:true,
+      headers: {
+        token: sessionStorage.getItem('token')
+      },
       data: {
         password: $('.newpwd').val(),
-        confirm_password: $('.surepwd').val(),
-        token: sessionStorage.getItem('token')
+        confirm_password: $('.surepwd').val()
       },
       success: function(res) {
         if(res.code === 1) {

@@ -11,19 +11,19 @@ var navs = [{
     {
       "title" : "中文轮播图编辑",
       "icon" : "icon-text",
-      "href" : "page/swiper/swiper.html",
+      "href" : "page/swiper/swiper.html?lang=cn",
       "spread" : false
     },
     {
         "title" : "英文轮播图编辑",
         "icon" : "icon-text",
-        "href" : "page/swiper/swiper.html",
+        "href" : "page/swiper/swiper.html?lang=en",
         "spread" : false
       },
     {
         "title" : "韩文轮播图编辑",
         "icon" : "icon-text",
-        "href" : "page/swiper/swiper.html",
+        "href" : "page/swiper/swiper.html?lang=kr",
         "spread" : false
       }
     ]
@@ -36,19 +36,19 @@ var navs = [{
     {
       "title" : "中文产品系列",
       "icon" : "icon-text",
-      "href" : "page/products/product.html",
+      "href" : "page/products/product.html?lang=cn",
       "spread" : false
     },
     {
         "title" : "英文产品系列",
         "icon" : "icon-text",
-        "href" : "page/products/product.html",
+        "href" : "page/products/product.html?lang=en",
         "spread" : false
       },
     {
         "title" : "韩文产品系列",
         "icon" : "icon-text",
-        "href" : "page/products/product.html",
+        "href" : "page/products/product.html?lang=kr",
         "spread" : false
       }
     ]

@@ -13,14 +13,17 @@ $('.submit').on('click', function () {
       alert('请输入密码')
       return
     }
+
     $.ajax({
       type:"post",
       url:"/api/admin/add-admin",
       async:true,
+      headers: {
+        token: sessionStorage.getItem('token')
+      },
       data: {
         admin: $('.userName').val(),
-        password: $('.password').val(),
-        token: sessionStorage.getItem('token')
+        password: $('.password').val()
       },
       success: function(res) {
         if(res.code === 0) {
@@ -32,4 +35,3 @@ $('.submit').on('click', function () {
     });
   })
 });
-
