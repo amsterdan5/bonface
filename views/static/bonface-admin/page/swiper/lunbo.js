@@ -8,7 +8,7 @@ layui.config({
 
   $.ajax({
     type: "get",
-    url: "/user/banner-list",
+    url: "/api/user/banner-list",
     async: true,
     data: {
       lang: lang
@@ -23,13 +23,13 @@ layui.config({
     $('.lang-wrap').addClass('cn')
     imgUpLoad('.cn .add', 'cn')
   }
-  
+
   // 英文情况
   if(lang === 'en') {
     $('.lang-wrap').addClass('en')
     imgUpLoad('.en .add', 'en')
   }
-  
+
   // 韩文情况
   if(lang === 'kr') {
     $('.lang-wrap').addClass('kr')
@@ -61,7 +61,7 @@ layui.config({
       }
       $.ajax({
         type:"post",
-        url:"/admin/save-banner",
+        url:"/api/admin/save-banner",
         async:true,
         headers: {
           token: sessionStorage.getItem('token')
@@ -83,7 +83,7 @@ layui.config({
     var id = $(this).parent().attr('id');
     $.ajax({
         type:"post",
-        url:"/admin/del-banner",
+        url:"/api/admin/del-banner",
         async:true,
         headers: {
           token: sessionStorage.getItem('token')

@@ -12,7 +12,7 @@ layui.config({
   $('#reset').on('click', function() {
     $('.pwd').val('')
   })
-  
+
   // 提交按钮
   $('#submit').on('click', function () {
     if(!$('.oldpwd').val()) {
@@ -41,7 +41,7 @@ layui.config({
     }
     $.ajax({
       type:"post",
-      url:"/admin/change-pwd",
+      url:"/api/admin/change-pwd",
       async:true,
       headers: {
         token: sessionStorage.getItem('token')

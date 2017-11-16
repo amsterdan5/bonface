@@ -25,7 +25,7 @@ class UserController extends Controller
         $lang         = $this->request->get('lang', 'cn');
         $bannerModel  = new Banner();
         $banner_lists = $bannerModel->getBanner($lang);
-        return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::SUCCESS), [$banner_lists]);
+        return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::SUCCESS), $banner_lists);
     }
 
     // 产品系列

@@ -5,10 +5,10 @@ layui.config({
       var layer = layui.layer;
       var langUrl = $('iframe').context.location.search
       var lang = langUrl.substring(6, langUrl.length)
-      
+
       $.ajax({
         type:"get",
-        url:"/user/product-list",
+        url:"/api/user/product-list",
         async:true,
         data: {
           lang: lang
@@ -17,12 +17,12 @@ layui.config({
           console.log(res)
         }
       });
-      
+
       //点击编辑出现编辑弹窗
       $('.edit').on('click', function () {
         $('.layer-wrap').removeClass('none');
 			})
-			
+
 			// 点击关闭弹窗
 			$('.close, .cancel').on('click', function () {
 				$('.layer-wrap').addClass('none');
