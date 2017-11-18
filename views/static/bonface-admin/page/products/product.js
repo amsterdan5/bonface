@@ -14,6 +14,9 @@ layui.config({
           lang: lang
         },
         success: function (res) {
+          if(res.code == 1) {
+            $('.cover-img > img').attr('src', res.data.image)
+          }
           console.log(res)
         }
       });
@@ -32,5 +35,4 @@ layui.config({
 			$('#add').on('click', function () {
         $('.layer-wrap').removeClass('none');
 			})
-
   })
