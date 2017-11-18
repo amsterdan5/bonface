@@ -25,8 +25,8 @@ $router->post('/admin/change-pwd', 'AdminController@changePwd');
 $router->post('/admin/save-banner', 'AdminBannerController@saveBanner');
 // 删除banner
 $router->post('/admin/del-banner', 'AdminBannerController@delBanner');
-// 修改密码
-$router->get('/admin/save-line', 'AdminProductController@saveProductLine');
+// 添加/编辑封面图
+$router->post('/admin/save-line', 'AdminProductController@saveProductLine');
 // 添加/编辑产品
 $router->post('/admin/save-product', 'AdminProductController@saveProduct');
 // 删除产品
