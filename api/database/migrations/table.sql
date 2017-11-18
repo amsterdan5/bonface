@@ -23,9 +23,17 @@ create table  if not exists token
     primary key(`admin_id`)
 )engine=innodb default charset=utf8 comment='登录token';
 
+create table if not exists cates
+(
+    `id` int(10) unsigned not null auto_increment comment '产品封面表',
+    `image` varchar(255) not null default '' comment '产品封面图',
+    primary key(`id`)
+)engine=innodb default charset=utf8 comment='产品封面图表';
+
 create table if not exists product
 (
     `id` int(10) unsigned not null auto_increment comment '产品id',
+    `cid` int(10) unsigned not null default 0 comment '产品封面id',
     `name` varchar(40) not null default '' comment '产品名',
     `image` varchar(255) not null default '' comment '产品图',
     `detail_image` varchar(255) not null default '' comment '产品详情图',
