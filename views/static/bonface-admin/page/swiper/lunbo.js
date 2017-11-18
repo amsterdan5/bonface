@@ -49,7 +49,6 @@ layui.config({
       var formData = new FormData();
       formData.append("image[]", fileObj);
       formData.append("type", 2);
-      console.log(formData)
       if(imgId === '') {
         data = {
           lang: lang
