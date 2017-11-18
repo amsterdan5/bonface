@@ -43,32 +43,52 @@ layui.config({
     })
 
     $('.file').on('change', function(e) {
+      var data;
       var imgId = $(this).parent().attr('id')
       var fileObj = e.target.files[0]
-      var image = fileObj.name
-      var data;
+      var formData = new FormData();
+      formData.append("image[]", fileObj);
+      formData.append("type", 2);
+      console.log(formData)
       if(imgId === '') {
         data = {
-          image: image,
           lang: lang
         }
       } else {
         data = {
-          image: image,
           lang: lang,
           id: imgId
         }
       }
+      // 图片上传
       $.ajax({
-        type:"post",
-        url:"/api/admin/save-banner",
-        async:true,
+        type: "post",
+        url: "/api/admin/upload-image",
+        async: true,
         headers: {
           token: sessionStorage.getItem('token')
         },
-        data: data,
+        data: formData,
+        processData: false,
+        //      contentType : false,
         success: function(res) {
           console.log(res)
+            // 图片保存
+          if(res.code == 1) {
+            data.image = res.data.images[0]
+            $.ajax({
+              type: "post",
+              url: "/api/admin/save-banner",
+              async: true,
+              headers: {
+                token: sessionStorage.getItem('token')
+              },
+              data: data,
+              success: function(res) {
+                console.log(res)
+              }
+            });
+          }
         }
       });
     })
@@ -82,18 +102,18 @@ layui.config({
   }).on('click', function() {
     var id = $(this).parent().attr('id');
     $.ajax({
-        type:"post",
-        url:"/api/admin/del-banner",
-        async:true,
-        headers: {
-          token: sessionStorage.getItem('token')
-        },
-        data: {
-          id: id
-        },
-        success: function(res) {
-          console.log(res)
-        }
-     });
+      type: "post",
+      url: "/api/admin/del-banner",
+      async: true,
+      headers: {
+        token: sessionStorage.getItem('token')
+      },
+      data: {
+        id: id
+      },
+      success: function(res) {
+        console.log(res)
+      }
+    });
   })
 })
