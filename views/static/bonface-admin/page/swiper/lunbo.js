@@ -43,6 +43,7 @@ layui.config({
     })
 
     $('.file').on('change', function(e) {
+      var parent = $(this).parent()
       var data;
       var imgId = $(this).parent().attr('id')
       var fileObj = e.target.files[0]
@@ -69,11 +70,12 @@ layui.config({
         },
         data: formData,
         processData: false,
-        //      contentType : false,
+        contentType : false,
         success: function(res) {
           console.log(res)
             // 图片保存
           if(res.code == 1) {
+            parent.find('img').attr('src', res.data.images[0])
             data.image = res.data.images[0]
             $.ajax({
               type: "post",
