@@ -57,14 +57,15 @@ class AdminBannerController extends BackBaseController
     // 删除banner
     public function delBanner()
     {
-        $id = $this->request->post('id', 0);
+        $id   = $this->request->post('id', 0);
+        $lang = $this->request->post('lang', 'cn');
 
         if (!$id) {
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::BANNER_ID_LACK));
         }
 
         $bannerModel = new Banner();
-        $count       = $bannerModel->getBannerCount();
+        $count       = $bannerModel->getBannerCount($lang);
 
         if ($count === 1) {
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::BANNER_LEAST_ONE));
