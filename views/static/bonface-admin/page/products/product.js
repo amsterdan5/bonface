@@ -6,19 +6,19 @@ $(function() {
   // 中文情况
   if(lang === 'cn') {
     $('.layer').addClass('cn')
-    imgUpLoad('.cn .add', 'cn')
+    imgUpLoad('.cn .add')
   }
 
   // 英文情况
   if(lang === 'en') {
     $('.layer').addClass('en')
-    imgUpLoad('.en .add', 'en')
+    imgUpLoad('.en .add')
   }
 
   // 韩文情况
   if(lang === 'kr') {
     $('.layer').addClass('kr')
-    imgUpLoad('.kr .add', 'kr')
+    imgUpLoad('.kr .add')
   }
 
   $.ajax({
@@ -36,7 +36,7 @@ $(function() {
   });
 
   //上传图片
-  function imgUpLoad(select, lang) {
+  function imgUpLoad(select) {
     $(select).on('click', function() {
       $(this).next().click()
     })
@@ -69,7 +69,25 @@ $(function() {
       console.log(res)
     })
   })
-
+  
+  // 点击更换封面
+  $('.cover-tips').on('click', function() {
+    $('.coverFile').click()
+    $('.coverFile').on('change', function(e) {
+      var coverObj= e.target.files[0]
+      common.imgUploadFn(coverObj, 1, '/api/admin/upload-image', function(res) {
+        if(res.code == 1) {
+          var imgData = {
+            image: res.data.images[0],
+            lang: lang
+          }
+          common.ajaxFn('/api/admin/save-line', imgData, function(ms) {
+            console.log(ms)
+          })
+        }
+      })
+    })
+  })
 
   //点击编辑出现编辑弹窗
   $('.edit').on('click', function() {
