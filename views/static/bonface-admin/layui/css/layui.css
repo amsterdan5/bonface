@@ -9,3 +9,77 @@
 html,body{
     font-family: "微软雅黑" !important;
 }
+
+.common-alert-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.common-alert {
+  width: 400px;
+  margin: 30px auto;
+  text-align: center;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-clip: padding-box;
+  outline: 0;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.common-modal-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: #f5f5f5;
+  text-align: left;
+}
+
+.common-modal-body {
+  padding: 20px 30px;
+}
+
+.common-alert button{
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  color: #00a53c;
+  background-color: #f5f5f5;
+  border-color: #ccc;
+  padding: 4px 15px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-width: 100px;
+  margin-bottom: 20px;
+}
+
+#common-sure {
+  color: #fff;
+  background-color: #1AA094;
+  border-color: #008c33;
+}
+
+#common-cancel{
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ccc;
+  margin-left: 15px;
+}

@@ -15,7 +15,8 @@ layui.config({
         },
         success: function (res) {
           if(res.code == 1) {
-            $('.cover-img > img').attr('src', res.data.image)
+            console.log(res)
+//          $('.cover-img > img').attr('src', res.data.image)
           }
           console.log(res)
         }

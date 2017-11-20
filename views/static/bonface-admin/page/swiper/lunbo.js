@@ -1,22 +1,6 @@
-layui.config({
-  base: "../../js/"
-}).use(['layer', 'jquery'], function() {
-  var $ = layui.jquery;
-  var layer = layui.layer;
+$(function() {
   var langUrl = $('iframe').context.location.search
   var lang = langUrl.substring(6, langUrl.length)
-
-  $.ajax({
-    type: "get",
-    url: "/api/user/banner-list",
-    async: true,
-    data: {
-      lang: lang
-    },
-    success: function(res) {
-      console.log(res)
-    }
-  });
 
   // 中文情况
   if(lang === 'cn') {
@@ -36,6 +20,29 @@ layui.config({
     imgUpLoad('.kr .add', 'kr')
   }
 
+  // banerlist 数据
+  init()
+  function init() {
+    $.ajax({
+      type: "get",
+      url: "/api/user/banner-list",
+      async: true,
+      data: {
+        lang: lang
+      },
+      success: function(res) {
+        if(res.code == 1) {
+          swiperData('#one img', '#one', res.data[0])
+          swiperData('#two img', '#two', res.data[1])
+          swiperData('#three img', '#three', res.data[2])
+          swiperData('#four img', '#four', res.data[3])
+          swiperData('#five img', '#five', res.data[4])
+          swiperData('#six img', '#six', res.data[5])
+        }
+      }
+    });
+  }
+
   //上传图片
   function imgUpLoad(select, lang) {
     $(select).on('click', function() {
@@ -45,11 +52,8 @@ layui.config({
     $('.file').on('change', function(e) {
       var parent = $(this).parent()
       var data;
-      var imgId = $(this).parent().attr('id')
+      var imgId = $(this).parent().attr('img_id')
       var fileObj = e.target.files[0]
-      var formData = new FormData();
-      formData.append("image[]", fileObj);
-      formData.append("type", 2);
       if(imgId === '') {
         data = {
           lang: lang
@@ -61,60 +65,52 @@ layui.config({
         }
       }
       // 图片上传
-      $.ajax({
-        type: "post",
-        url: "/api/admin/upload-image",
-        async: true,
-        headers: {
-          token: sessionStorage.getItem('token')
-        },
-        data: formData,
-        processData: false,
-        contentType : false,
-        success: function(res) {
-          console.log(res)
-            // 图片保存
-          if(res.code == 1) {
-            parent.find('img').attr('src', res.data.images[0])
-            data.image = res.data.images[0]
-            $.ajax({
-              type: "post",
-              url: "/api/admin/save-banner",
-              async: true,
-              headers: {
-                token: sessionStorage.getItem('token')
-              },
-              data: data,
-              success: function(res) {
-                console.log(res)
-              }
-            });
-          }
+      common.imgUploadFn(fileObj, 2, '/api/admin/upload-image', function(res) {
+        if(res.code == 1) {
+          data.image = res.data.images[0]
+          // 图片保存
+          common.ajaxFn('/api/admin/save-banner', data, function(res) {
+            if(res.code == 1) {
+              init()
+            }
+          })
         }
-      });
+      })
     })
+  }
+
+  // 渲染数据
+  function swiperData(imgSelect, idSelect, data) {
+    if(data) {
+      $(imgSelect).attr('src', data.image)
+      $(idSelect).attr('img_id', data.id)
+      $(idSelect).find('.add').addClass('none')
+    }
   }
 
   //鼠标移上去出现删除按钮
   $('.del').on('mouseenter', function() {
+    if(!$(this).parent().attr('img_id')) {
+//    return false
+    }
     $(this).removeClass('none')
   }).on('mouseout', function() {
     $(this).addClass('none')
   }).on('click', function() {
-    var id = $(this).parent().attr('id');
-    $.ajax({
-      type: "post",
-      url: "/api/admin/del-banner",
-      async: true,
-      headers: {
-        token: sessionStorage.getItem('token')
-      },
-      data: {
-        id: id
-      },
-      success: function(res) {
-        console.log(res)
-      }
-    });
+    var id = $(this).parent().attr('img_id');
+    var delData = {
+      lang: lang,
+      id: id
+    }
+    if($('.common-alert-wrap')) {
+      $('.common-alert-wrap').show()
+    }
+    common.popupTip('轮播图删除', '确认要删除吗？', function() {
+      common.ajaxFn('/api/admin/del-banner', delData, function(res) {
+        if(res.code == 1) {
+          window.location.reload()
+        }
+      })
+    }, function() {})
   })
 })
