@@ -22,11 +22,12 @@ class AdminBannerController extends BackBaseController
     // 保存banner信息
     public function saveBanner()
     {
-        $image = $this->request->post('image', '');
-        $id    = $this->request->post('id', 0);
-        $lang  = $this->request->post('lang', 'cn');
+        $image     = $this->request->post('image', '');
+        $web_image = $this->request->post('web_image', '');
+        $id        = $this->request->post('id', 0);
+        $lang      = $this->request->post('lang', 'cn');
 
-        if (!$image) {
+        if (!$image || !$web_image) {
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::NO_FILE));
         }
 
@@ -34,7 +35,7 @@ class AdminBannerController extends BackBaseController
 
         // 编辑
         if ($id) {
-            if ($bannerModel->editBanner($id, $image, $lang)) {
+            if ($bannerModel->editBanner($id, $image, $web_image, $lang)) {
                 return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::BANNER_INFO_ADD_SUCCESS));
             }
             return jsonAjax(StatusNo::FAILED, StatusNo::getStatusMsg(StatusNo::BANNER_INFO_ADD_FAILED));
@@ -47,7 +48,7 @@ class AdminBannerController extends BackBaseController
         }
 
         // 新增
-        if ($bannerModel->addBanner($image, $lang)) {
+        if ($bannerModel->addBanner($image, $web_image, $lang)) {
             return jsonAjax(StatusNo::SUCCESS, StatusNo::getStatusMsg(StatusNo::BANNER_INFO_ADD_SUCCESS));
         }
 

@@ -6,25 +6,25 @@ class Banner
     // 表名
     protected $table = 'banner';
 
-    public function addBanner(string $image, string $lang)
+    public function addBanner(string $image, string $web_image, string $lang)
     {
         return app('db')->insert(
-            'insert into ' . $this->table . '(`image`,`lang`) values(?,?)',
-            [$image, $lang]
+            'insert into ' . $this->table . '(`image`,`web_image`,`lang`) values(?,?)',
+            [$image, $web_image, $lang]
         );
     }
 
-    public function editBanner(int $id, string $image, string $lang)
+    public function editBanner(int $id, string $image, string $web_image, string $lang)
     {
         return app('db')->update(
-            'update ' . $this->table . ' set `image`=?,`lang`=? where id=? limit 1',
-            [$image, $lang, $id]
+            'update ' . $this->table . ' set `image`=?,`web_image`=?,`lang`=? where id=? limit 1',
+            [$image, $web_image, $lang, $id]
         );
     }
 
     public function getBanner(string $lang)
     {
-        return app('db')->select('select id,image from ' . $this->table . ' where lang=?', [$lang]);
+        return app('db')->select('select id,image,web_image from ' . $this->table . ' where lang=?', [$lang]);
     }
 
     public function getBannerCount(string $lang)

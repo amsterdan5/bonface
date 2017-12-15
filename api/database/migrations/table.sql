@@ -59,3 +59,10 @@ create table if not exists config
 )engine=innodb default charset=utf8 comment='配置表';
 
 insert into `config`(`id`,`type`,`value`) values(1,'theme','default');
+
+
+alter table cates add column `web_image` varchar(255) not null default '' comment '移动端图';
+
+alter table product add column `web_image` varchar(255) not null default '' comment '移动端图';
+
+alter table banner add column `web_image` varchar(255) not null default '' comment '移动端图';
